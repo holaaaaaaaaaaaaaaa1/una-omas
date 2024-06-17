@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hola</title>
+    <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+<div class="container">
+    <h1>¿¡QUÉ SOMOS!? <br> PUES...</h1>
+    <p>(ver en orden y leer descripción ;D)</p>
+    <div class="video-container">
+        <div class="video" data-description="Un duolingo emocionado por el beso de su amada?!!!"><video src="images/tulingo ‐ Hecho con Clipchamp.mp4" muted></video></div>
+        <div class="video" data-description="O seremos dos águilas calvas danzando aferradas en el aire??!!!"><video src="images/Vídeo sin título ‐ Hecho con Clipchamp.mp4" muted></video></div>
+        <div class="video" data-description="Quizas seamos dos estatuas que unen sus almas para el nacimiento de una sola..."><video src="images/WhatsApp Video 2024-06-16 at 10.58.57 PM.mp4" muted></video></div>
+        <div class="video" data-description="Puede que Pam y Jim, un lanzaguisantes protegiendo su girasol o goku y chichi?..."><video src="images/WhatsApp Video 2024-06-16 at 11.00.05 PM.mp4" muted></video></div>
+        <div class="video" data-description="Finn y su princesa Flama???"><video src="images/WhatsApp Video 2024-06-16 at 11.02.39 PM.mp4" muted></video></div>
+        <div class="video" data-description="O somos todos esos y más, somos nosotros juntos mientras suena ésta melodía de fondo..."><video src="images/WhatsApp Video 2024-06-16 at 11.40.35 PM.mp4" muted></video></div>
+    </div>
+    <a href="index.html"><h1>VOLVER</h1></a>
+</div>
+<div class="popup-video">
+    <span>&times;</span>
+    <div class="video"><video src="" muted autoplay controls></video></div>
+    <p class="description"></p>
+</div>
+
+
+
+<script>
+document.querySelectorAll('.video-container video').forEach(vid => {
+    vid.onclick = () => {
+        const popup = document.querySelector('.popup-video');
+        popup.style.display = 'block';
+        popup.querySelector('video').src = vid.getAttribute('src');
+        popup.querySelector('.description').innerText = vid.parentElement.getAttribute('data-description');
+    }
+});
+
+document.querySelector('.popup-video span').onclick = () => {
+    const popup = document.querySelector('.popup-video');
+    popup.style.display = 'none';
+    popup.querySelector('video').src = "";
+    popup.querySelector('.description').innerText = "";
+}
+</script>
+
+
+</body>
+</html>

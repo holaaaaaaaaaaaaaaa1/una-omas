@@ -1,0 +1,133 @@
+body {
+  background-color: #000;
+}
+
+@-webkit-keyframes hover {
+  to {
+    translate: 0px 12px;
+  }
+}
+
+@keyframes hover {
+  to {
+    translate: 0px 12px;
+  }
+}
+
+h1 {
+  font-size: 3vw; /* Ajusta el tamaño del título según el tamaño de las cartas */
+  font-weight: bold;
+  z-index: 1;
+  background: linear-gradient(70deg, red, yellow, green, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.hands { 
+  --cards: 3;
+  --curvature: 30deg;
+  counter-reset: cards;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(5vmin);
+  transform-style: preserve-3d;
+}
+.hands > * {
+  --hue: calc(360deg / var(--cards) * var(--index));
+  --curve: calc(var(--curvature) * ((var(--index) - (var(--cards) - 1) / 2) / var(--cards)));
+  position: absolute;
+  counter-increment: cards;
+  flex: 0 0 auto;
+  width: 15vw;
+  max-width: 20vh;
+  aspect-ratio: 2/3;
+  transform-origin: 50% 100%;
+  transform: rotate(var(--curve)) translateY(-225%);
+  transition: all 0.3s;
+  position: absolute;
+  cursor: pointer;
+  font-size: 15vmin;
+  transform-style: preserve-3d;
+}
+.hands > *::before {
+  content: counter(cards);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: hsl(var(--hue), 50%, 30%);
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  border: solid 2px hsla(var(--hue), 50%, 40%, 1);
+  background-image: linear-gradient(to bottom right, hsl(var(--hue), 50%, 66%), hsl(calc(var(--hue) - 45deg), 40%, 50%));
+  transition: all 0.3s, translate 0s;
+  box-shadow: 0px 4px 10px hsla(var(--hue), 80%, 80%, 0);
+  border-radius: 4px;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+.hands > *:hover {
+  -webkit-animation: hover 1s ease-in-out infinite alternate forwards;
+          animation: hover 1s ease-in-out infinite alternate forwards;
+}
+.hands > *:hover::before {
+  transform: translateY(-42.5%) rotate(calc(var(--curve) * -1)) scale(1.2);
+  transition-duration: 0.2s, 0s;
+  box-shadow: 0px 4px 15px hsla(var(--hue), 80%, 70%, 0.6);
+  border: solid 2px hsla(var(--hue), 80%, 70%, 1);
+  color: hsl(var(--hue), 60%, 80%);
+  translate: 0px 0px 1px;
+}
+ 
+.hands:has(li:nth-child(1)) {
+  --cards: 1;
+}
+.hands > *:nth-child(1) {
+  --index: 0;
+}
+.hands:has(li:nth-child(2)) {
+  --cards: 2;
+}
+.hands > *:nth-child(2) {
+  --index: 1;
+}
+.hands:has(li:nth-child(3)) {
+  --cards: 3;
+}
+.hands > *:nth-child(3) {
+  --index: 2;
+}
+.hands:has(li:nth-child(4)) {
+  --cards: 4;
+}
+.hands > *:nth-child(4) {
+  --index: 3;
+}
+.hands:has(li:nth-child(5)) {
+  --cards: 5;
+}
+.hands > *:nth-child(5) {
+  --index: 4;
+}
+@media (min-width: 375px) and (min-height: 667px) {
+  .container {
+    width: 375px;
+    height: 667px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hands {
+    bottom: 40%;
+    transform: translateY(60%);
+  }
+  h1 {
+    font-size: 5vw; /* Ajusta el tamaño del título según el tamaño de las cartas */
+  }
+}

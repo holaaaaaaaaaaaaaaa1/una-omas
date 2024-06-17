@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hola</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Hola chichi</strong>
+                        <p>
+                            Espero ya te haya podido dar tu otro regalo a estas alturas que leas esto, solo quiero que sepas que has sido y eres alguien muy especial en mi vida y espero poder compartir más canitas contigo, sé que esto no es lo que esperarías o lo mejor que puedas recibir de regalo, pero lo hago con mucho amor y aprecio por vos. <a  href="index.html">regrecheche</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
+
+    
+</body>
+</html>
